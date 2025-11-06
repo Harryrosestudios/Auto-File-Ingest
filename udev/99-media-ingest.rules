@@ -1,0 +1,14 @@
+# udev rules for automatic media device detection
+# Place this file in /etc/udev/rules.d/99-media-ingest.rules
+
+# Rule for SD cards and USB storage devices
+# This triggers when a new block device with a filesystem is detected
+ACTION=="add", KERNEL=="sd[a-z][0-9]", SUBSYSTEM=="block", ENV{ID_FS_TYPE}!="", RUN+="/usr/local/bin/media-ingest-trigger %k"
+ACTION=="add", KERNEL=="mmcblk[0-9]p[0-9]", SUBSYSTEM=="block", ENV{ID_FS_TYPE}!="", RUN+="/usr/local/bin/media-ingest-trigger %k"
+
+# Alternative: Notify the media-ingest service about new devices
+# ACTION=="add", KERNEL=="sd[a-z][0-9]", SUBSYSTEM=="block", ENV{ID_FS_TYPE}!="", TAG+="systemd", ENV{SYSTEMD_WANTS}="media-ingest-device@%k.service"
+
+# To reload udev rules without rebooting:
+# sudo udevadm control --reload-rules
+# sudo udevadm trigger

@@ -1,0 +1,98 @@
+# Media Ingest Server Configuration File
+# Copy this file to /etc/media-ingest/config.yaml and customize
+
+# Destination path where files will be organized and stored
+destination_path: "/mnt/storage/media"
+
+# Auto-mount configuration
+auto_mount:
+  # Base path where devices will be mounted
+  mount_base: "/mnt/ingest"
+  # Enable automatic mounting
+  enabled: true
+
+# Logging configuration
+logging:
+  # Server log directory
+  server_log_path: "/var/log/media-ingest"
+  # Also create log on source device
+  log_to_device: true
+  # Number of days to keep logs (0 = keep forever)
+  retention_days: 90
+  # Log level: debug, info, warning, error
+  log_level: "info"
+
+# File transfer settings
+transfer:
+  # Number of concurrent file transfers
+  max_workers: 4
+  # Buffer size for file copying (in bytes)
+  buffer_size: 1048576  # 1MB
+  # Verify checksums after transfer
+  verify_checksums: true
+  # Retry failed transfers
+  max_retries: 3
+  # Priority file prefixes (these files are transferred first)
+  priority_prefixes:
+    - "1_"
+    - "priority_"
+
+# Filename parsing patterns
+# Default pattern: ProjectName_Client_ACam_ClipNumber.mp4
+parsing:
+  # Regex pattern to extract components from filename
+  # Groups: 1=ProjectName, 2=Client, 3=Camera, 4=ClipNumber+Extension
+  pattern: "^([^_]+)_([^_]+)_(ACam|BCam|CCam)_(.+)$"
+  # Folder structure template: {client}/{project}/{camera}
+  folder_structure: "{client}/{project}/{camera}"
+  # Handle files that don't match pattern
+  unmatched_folder: "Unsorted"
+
+# Email notification settings (optional)
+email:
+  # Enable email notifications
+  enabled: false
+  # SMTP server settings
+  smtp_host: "smtp.gmail.com"
+  smtp_port: 587
+  # Use TLS
+  use_tls: true
+  # Authentication
+  username: "your-email@gmail.com"
+  password: "your-app-password"
+  # Email addresses
+  from: "media-ingest@example.com"
+  to:
+    - "admin@example.com"
+    - "operator@example.com"
+  # Email subject template
+  subject: "Media Ingest Complete - {device}"
+  # Include log file as attachment
+  attach_log: true
+
+# Device detection settings
+device_detection:
+  # Watch for block devices
+  enabled: true
+  # Minimum device size in bytes (to filter out small devices)
+  min_size_bytes: 1073741824  # 1GB
+  # File systems to process
+  allowed_filesystems:
+    - "vfat"
+    - "exfat"
+    - "ntfs"
+    - "ext4"
+    - "ext3"
+  # Devices to exclude (by path pattern)
+  exclude_patterns:
+    - "/dev/sda"  # Usually the system disk
+    - "/dev/nvme0n1"  # Usually the system disk
+
+# Performance settings
+performance:
+  # Enable progress display
+  show_progress: true
+  # Progress update interval (seconds)
+  progress_interval: 1
+  # Enable colored output
+  colored_output: true
