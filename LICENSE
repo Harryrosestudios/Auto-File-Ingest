@@ -1,0 +1,162 @@
+PROPRIETARY SOFTWARE LICENSE AGREEMENT
+
+Copyright (c) 2025 Harry Rose Studios
+All Rights Reserved.
+
+IMPORTANT - READ CAREFULLY:
+
+This Proprietary Software License Agreement ("Agreement") is a legal agreement between 
+you (either an individual or a single entity, "Licensee") and Harry Rose Studios 
+("Licensor") for the Media Ingest Server software, including any associated documentation, 
+updates, and related materials (collectively, the "Software").
+
+BY VIEWING, DOWNLOADING, INSTALLING, OR USING THE SOFTWARE, YOU AGREE TO BE BOUND BY 
+THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, DO NOT 
+VIEW, DOWNLOAD, INSTALL, OR USE THE SOFTWARE.
+
+================================================================================
+1. GRANT OF LICENSE
+================================================================================
+
+1.1 EVALUATION LICENSE
+The source code is made publicly visible for evaluation, review, and transparency 
+purposes only. This does NOT grant you any rights to use, modify, or distribute the 
+Software.
+
+1.2 COMMERCIAL LICENSE
+Commercial use of the Software requires a separate, written Commercial License Agreement. 
+Without a valid Commercial License Agreement, you have NO rights to use this Software 
+for any commercial purpose.
+
+================================================================================
+2. RESTRICTIONS
+================================================================================
+
+WITHOUT A VALID COMMERCIAL LICENSE, YOU MAY NOT:
+
+2.1 Use the Software for any commercial purpose whatsoever, including but not limited to:
+    - Operating the Software in a production environment
+    - Using the Software to generate revenue or provide services
+    - Deploying the Software for business operations
+    - Using the Software for any for-profit activity
+
+2.2 Modify, adapt, translate, reverse engineer, decompile, or disassemble the Software
+
+2.3 Create derivative works based on the Software
+
+2.4 Distribute, sublicense, lease, rent, loan, or transfer the Software to any third party
+
+2.5 Remove or alter any copyright, trademark, or other proprietary notices from the Software
+
+2.6 Use the Software in any manner that violates applicable laws or regulations
+
+================================================================================
+3. INTELLECTUAL PROPERTY RIGHTS
+================================================================================
+
+3.1 The Software is licensed, not sold. This Agreement does not transfer any ownership 
+rights to you.
+
+3.2 The Software is protected by copyright laws and international copyright treaties, 
+as well as other intellectual property laws and treaties.
+
+3.3 All title, ownership rights, and intellectual property rights in and to the Software 
+remain with Harry Rose Studios.
+
+3.4 All rights not expressly granted in this Agreement are reserved by Harry Rose Studios.
+
+================================================================================
+4. COMMERCIAL LICENSE INQUIRIES
+================================================================================
+
+To obtain a Commercial License for the Software, please contact:
+
+    Email: harry@harryrose.dev
+    Subject: Media Ingest Server - Commercial License Inquiry
+
+Commercial licenses are available for:
+- Single-site deployments
+- Multi-site deployments
+- Enterprise deployments
+- OEM/Embedded use
+- Custom development and integration
+
+================================================================================
+5. CONFIDENTIALITY
+================================================================================
+
+5.1 The Software contains proprietary and confidential information of Harry Rose Studios.
+
+5.2 You agree to maintain the confidentiality of any non-public aspects of the Software 
+and to use the same degree of care you use to protect your own confidential information, 
+but no less than reasonable care.
+
+================================================================================
+6. WARRANTY DISCLAIMER
+================================================================================
+
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+HARRY ROSE STUDIOS DOES NOT WARRANT THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR 
+THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE.
+
+================================================================================
+7. LIMITATION OF LIABILITY
+================================================================================
+
+IN NO EVENT SHALL HARRY ROSE STUDIOS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, 
+OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF 
+BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER 
+PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF 
+HARRY ROSE STUDIOS HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+================================================================================
+8. TERMINATION
+================================================================================
+
+8.1 This Agreement is effective until terminated.
+
+8.2 Your rights under this Agreement will terminate automatically without notice if you 
+fail to comply with any term of this Agreement.
+
+8.3 Upon termination, you must immediately cease all use of the Software and destroy all 
+copies of the Software in your possession or control.
+
+================================================================================
+9. GOVERNING LAW
+================================================================================
+
+This Agreement shall be governed by and construed in accordance with the laws of the 
+jurisdiction in which Harry Rose Studios operates, without regard to its conflict of 
+law provisions.
+
+================================================================================
+10. ENTIRE AGREEMENT
+================================================================================
+
+This Agreement constitutes the entire agreement between you and Harry Rose Studios 
+concerning the subject matter hereof and supersedes all prior or contemporaneous oral 
+or written communications, proposals, and representations.
+
+================================================================================
+11. CONTACT INFORMATION
+================================================================================
+
+For licensing inquiries, questions about this Agreement, or commercial use:
+
+    Harry Rose Studios
+    Email: harry@harryrose.dev
+
+================================================================================
+
+BY VIEWING OR USING THIS SOFTWARE, YOU ACKNOWLEDGE THAT YOU HAVE READ THIS AGREEMENT, 
+UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.
+
+IF YOU DO NOT AGREE TO THESE TERMS, YOU MUST NOT USE THE SOFTWARE AND MUST DELETE 
+ALL COPIES IN YOUR POSSESSION.
+
+================================================================================
+END OF LICENSE AGREEMENT
+================================================================================
