@@ -1,12 +1,18 @@
 # Media Ingest Server
 
-A high-performance, automated media ingest system for Linux that detects SD cards and SSDs, automatically transfers files, and organizes them based on filename patterns.
+A high-performance, automated media ingest system for **Windows and Linux** that detects SD cards and SSDs, automatically transfers files, and organizes them based on filename patterns.
 
 ## Features
 
+✨ **Cross-Platform Support**
+- **Windows**: Native Win32 API integration for device detection
+- **Linux**: udev rules for automatic device detection
+- Seamless operation on both platforms with single codebase
+- Platform-specific optimizations for best performance
+
 ✨ **Automatic Device Detection**
-- Detects SD cards and SSDs when plugged in using udev rules
-- Automatically mounts devices in plug-and-play fashion
+- **Windows**: Detects removable drives (USB, SD cards) via Win32 API
+- **Linux**: Detects devices using udev rules and automatically mounts them
 - Supports multiple devices connected simultaneously
 - Each device processed independently and concurrently
 
@@ -39,12 +45,46 @@ A high-performance, automated media ingest system for Linux that detects SD card
 
 ### Prerequisites
 
-- Linux system (Ubuntu, Debian, Fedora, CentOS, Arch, etc.)
+**Windows:**
+- Windows 10 or higher
+- Go 1.21 or higher
+- Administrator access
+
+**Linux:**
+- Ubuntu, Debian, Fedora, CentOS, Arch, or other modern distribution
 - Go 1.21 or higher
 - Root/sudo access
 - udev support
 
-### Quick Install
+### Windows Installation
+
+```powershell
+# Clone or download the repository
+cd AutoFileIngest
+
+# Build the application
+go build -o media-ingest.exe ./cmd/media-ingest
+
+# Create configuration directory
+New-Item -ItemType Directory -Force -Path "$env:ProgramData\MediaIngest"
+Copy-Item config.example.yaml "$env:ProgramData\MediaIngest\config.yaml"
+
+# Create log directory
+New-Item -ItemType Directory -Force -Path "$env:ProgramData\MediaIngest\logs"
+
+# Run the application (as Administrator)
+.\media-ingest.exe -config "$env:ProgramData\MediaIngest\config.yaml"
+```
+
+**Testing on Windows:**
+```powershell
+# Run the comprehensive test suite
+.\scripts\test-windows.ps1
+```
+
+### Linux Installation
+
+#### Quick Install
 
 ```bash
 # Clone or download the repository
@@ -65,7 +105,7 @@ The installation script will:
 7. Install systemd service
 8. Install udev rules
 
-### Manual Installation
+#### Manual Installation
 
 If you prefer to install manually:
 
@@ -141,7 +181,31 @@ email:
 
 ## Usage
 
-### Running as a Service
+### Windows
+
+**Running as Administrator:**
+```powershell
+# Run from PowerShell as Administrator
+.\media-ingest.exe -config "$env:ProgramData\MediaIngest\config.yaml"
+```
+
+**Device Detection:**
+- The application continuously monitors for new removable drives
+- When a USB drive or SD card is inserted, it's automatically detected
+- Files are transferred and organized according to your configuration
+- Progress is displayed in the console with color-coded output
+
+**Windows Service (Optional):**
+You can set up the application as a Windows Service using tools like NSSM (Non-Sucking Service Manager):
+```powershell
+# Download NSSM and install as service
+nssm install MediaIngest "C:\path\to\media-ingest.exe" "-config $env:ProgramData\MediaIngest\config.yaml"
+nssm start MediaIngest
+```
+
+### Linux - Running as a Service
+
+### Linux - Running as a Service
 
 ```bash
 # Start the service
@@ -162,14 +226,29 @@ sudo systemctl stop media-ingest
 
 ### Running Manually
 
-For testing or debugging:
+**Windows:**
+```powershell
+.\media-ingest.exe -config config.yaml
+```
 
+**Linux:**
 ```bash
 sudo media-ingest -config /etc/media-ingest/config.yaml
 ```
 
 ### How It Works
 
+**Windows:**
+1. **Device Detection**: Application polls for new removable drives using Win32 API
+2. **File Scanning**: All files on the detected drive are scanned
+3. **Prioritization**: Files starting with `1_` are queued first
+4. **Transfer**: Files are copied (not moved) to the destination with checksum verification
+5. **Organization**: Files are organized based on the filename pattern into nested folders
+6. **Logging**: Detailed logs are created in the configured log directory
+7. **Notification**: Optional email notification is sent
+8. **Complete**: Drive remains accessible for manual verification
+
+**Linux:**
 1. **Device Detection**: When you plug in an SD card or SSD, udev detects it
 2. **Auto-Mount**: The device is automatically mounted to `/mnt/ingest/[device-name]`
 3. **File Scanning**: All files on the device are scanned
@@ -267,6 +346,26 @@ sudo ls -lt /var/log/media-ingest/ | head -n 2
 
 ## Testing
 
+### Automated Test Suite
+
+**Windows:**
+```powershell
+# Run comprehensive test suite
+.\scripts\test-windows.ps1
+
+# Or run tests manually
+go test ./... -v
+```
+
+**Linux:**
+```bash
+# Run comprehensive test suite
+./scripts/test.sh
+
+# Or run tests manually
+go test ./... -v
+```
+
 ### Test Scenarios Covered
 
 1. ✅ Multiple devices plugged in simultaneously
@@ -362,6 +461,17 @@ transfer:
 
 ## Uninstall
 
+**Windows:**
+```powershell
+# Remove configuration and logs
+Remove-Item -Recurse -Force "$env:ProgramData\MediaIngest"
+
+# If installed as service with NSSM
+nssm stop MediaIngest
+nssm remove MediaIngest confirm
+```
+
+**Linux:**
 ```bash
 # Stop and disable service
 sudo systemctl stop media-ingest
@@ -381,29 +491,48 @@ sudo udevadm control --reload-rules
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit issues or pull requests.
+This software is available for viewing and evaluation purposes only. Commercial use, modification, or distribution requires a private license agreement.
+
+For licensing inquiries, please contact: **harry@harryrose.dev**
 
 ## License
 
-MIT License - See LICENSE file for details
+**Proprietary Commercial License**
+
+This software is proprietary and confidential. The source code is made visible for evaluation and transparency purposes only.
+
+**You may NOT:**
+- Use this software for commercial purposes without a license
+- Modify or create derivative works
+- Distribute or sublicense the software
+- Use the software in production environments
+
+**To obtain a license** for commercial use, please contact: **harry@harryrose.dev**
+
+See the [LICENSE](LICENSE) file for complete terms.
 
 ## Support
 
-For issues, questions, or feature requests, please open an issue on GitHub.
+For licensing inquiries, commercial support, or custom development:
+- **Email:** harry@harryrose.dev
+
+For technical issues with licensed installations, please contact your license representative.
 
 ## Changelog
 
 ### Version 1.0.0
-- Initial release
-- Automatic device detection
-- Concurrent file transfers
-- Checksum verification
-- Priority queue system
-- Email notifications
-- Comprehensive logging
-- Systemd service integration
-- udev rules for auto-detection
+- Cross-platform support (Windows and Linux)
+- Windows: Native Win32 API device detection
+- Linux: udev-based device detection and auto-mounting
+- Automatic device detection and monitoring
+- Concurrent file transfers with worker pools
+- SHA256 checksum verification
+- Priority queue system for urgent files
+- Email notifications (optional)
+- Comprehensive logging system
+- Platform-specific optimizations
+- Full test coverage with automated test scripts
 
 ---
 
-**Built with ❤️ for media professionals**
+**Professional media ingest solution | Contact harry@harryrose.dev for licensing**
